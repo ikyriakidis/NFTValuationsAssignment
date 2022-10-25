@@ -38,10 +38,11 @@ namespace NFTValuations
 
             services.AddSingleton<IWeb3>(web3 => new Web3($"https://mainnet.infura.io/v3/{appSettings.InfuraIoToken}"));
             services.AddSingleton<IServicePool, ServicePool>();
-            
+
             services.AddHttpClient();
 
             services.AddSingleton<EntryPoint>();
+            services.AddSingleton<IDetector, Detector>();
 
             return services;
         }

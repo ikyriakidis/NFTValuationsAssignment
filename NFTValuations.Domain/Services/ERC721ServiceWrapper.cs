@@ -1,7 +1,5 @@
-﻿using Nethereum.RPC.Eth.DTOs;
-using Nethereum.Web3;
+﻿using Nethereum.Web3;
 using NFTValuations.Contracts.ERC721;
-using NFTValuations.Contracts.ERC721.ContractDefinition;
 using System.Numerics;
 using System.Threading.Tasks;
 
@@ -17,14 +15,9 @@ namespace NFTValuations.Domain.Services
             _eRC721Service = new ERC721Service((Web3)web3, contractAddress);
         }
 
-        public Task<string> TokenURIQueryAsync(TokenURIFunction tokenURIFunction, BlockParameter blockParameter = null)
+        public Task<string> TokenURIQueryAsync(BigInteger tokenId)
         {
-            return _eRC721Service.TokenURIQueryAsync(tokenURIFunction, blockParameter);
-        }
-
-        public Task<string> TokenURIQueryAsync(BigInteger tokenId, BlockParameter blockParameter = null)
-        {
-            return _eRC721Service.TokenURIQueryAsync(tokenId, blockParameter);
+            return _eRC721Service.TokenURIQueryAsync(tokenId, null);
         }
     }
 }
